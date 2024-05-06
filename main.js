@@ -1,28 +1,36 @@
-const usuarioFortinut = []
-function cargoBasedeDatos (nombre,edad,apoya,mascota){
+const usuariosFortinut = []
+function cargoBasedeDatos (nombreUsuario,edadUsuario,apoya,mascota){
     const usuario = {
-     nombre:nombre,
-     edad:edad,
+     nombreUsuario:nombre,
+     edadUsuario:edad,
      apoya:apoya,
      mascota:mascota
  }
-    usuarioFortinut.push(usuario)
+    usuariosFortinut.push(usuario)
+}
+function muestroBaseDeDatos (nombreUsuario,edadUsuario,apoya,mascota){
+    for(const usuario of usuariosFortinut)
+        {
+            alert("Nombre:"+ usuario.nombre+"Edad:"+usuario.edad+"Apoya el emprendimieto?"+usuario.apoya+"Mascota:"+usuario.mascota)
+        }
 }
 
-function apoyaEmprendimiento (apoya){
+function apoyaEmprendimiento(apoya){
 if(apoya){
+    apoya= "Si"
     do{
-        edad.usuario = prompt("Indique su edad: ")
-        if(edad.usuario<18)
+        edadUsuario = prompt("Indique su edad: ")
+        if(edadUsuario<18)
             alert("USTED DEBE TENER AL MENOS 18 AÑOS PARA DONAR")
-        }while (edad.usuario<18)
+        }while (edadUsuario<18)
         prompt("Indique en pesos, cuánto quiere donar:")
-        alert ("Muchas gracias"+ nombre.usuario+ ", atentamente, Fortinut")
+        alert ("Muchas gracias"+ nombreUsuario+ ", atentamente, Fortinut")
 }
-else
+else{
+    apoya="No"
     alert ("Muchas gracias de todas modos, atentamente Fortinut")
-     usuario.nombre = prompt("Ingrese su nombre y apellido: ")
-    
+     nombreUsuario = prompt("Ingrese su nombre y apellido: ")
+}
 }
 
 function encargaUsuario (usuarioEncarga){
@@ -34,7 +42,7 @@ else
 
 function siTieneMascota (tieneMascota){
        confirm("¿Desea comprar alimento?") 
-        usuario.mascota = prompt("Indique para que animal sera su pedido(gato/perro)")
+        mascota = prompt("Indique para que animal sera su pedido(gato/perro)")
         if(mascota=="Perro"||mascota=="perro"){
             let usuarioEncarga = confirm("Actualmente el paquete de 2kg de perro esta valuado en 20.000 pesos, confirme para encargar")
             encargaUsuario(usuarioEncarga)}
@@ -47,7 +55,7 @@ function siTieneMascota (tieneMascota){
 
 function noTieneMascota (tieneMascota){
       apoya=confirm("¿Quiere apoyar de todas maneras al emprendimiento?")
-        apoyaEmprendimiento(apoya)
+      apoyaEmprendimiento(apoya)
 }
 
 function main(){
@@ -60,3 +68,4 @@ else
 }
     main()
   cargoBasedeDatos(usuario)
+  muestr
