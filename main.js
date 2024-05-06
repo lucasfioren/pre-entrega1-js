@@ -1,22 +1,31 @@
 const usuarioFortinut = []
-
-const usuario = {
-    nombreUsuario : nombreUsuario
-    edad:edad
+function cargoBasedeDatos (nombre,edad,apoya,mascota){
+    const usuario = {
+     nombre:nombre,
+     edad:edad,
+     apoya:apoya,
+     mascota:mascota
+ }
+    usuarioFortinut.push(usuario)
 }
 
-function apoyaEmprendimiento (){
-    let nombreUsuario prompt("Ingrese su nombre y apellido: ")
+function apoyaEmprendimiento (apoya){
+if(apoya){
     do{
-    let edad = prompt("Indique su edad: ")
-    if(edad<18)
-        alert("USTED DEBE TENER AL MENOS 18 AÑOS PARA DONAR")
-    }while (edad<18)
-    prompt("Indique en pesos, cuánto quiere donar:")
-    alert ("Muchas gracias, atentamente, Fortinut")
+        edad.usuario = prompt("Indique su edad: ")
+        if(edad.usuario<18)
+            alert("USTED DEBE TENER AL MENOS 18 AÑOS PARA DONAR")
+        }while (edad.usuario<18)
+        prompt("Indique en pesos, cuánto quiere donar:")
+        alert ("Muchas gracias"+ nombre.usuario+ ", atentamente, Fortinut")
+}
+else
+    alert ("Muchas gracias de todas modos, atentamente Fortinut")
+     usuario.nombre = prompt("Ingrese su nombre y apellido: ")
+    
 }
 
-function encargaUsuario (){
+function encargaUsuario (usuarioEncarga){
 if(usuarioEncarga)
     alert("Muchas gracias, tu pedido está encargado, atentamente Fortinut")
 else
@@ -25,28 +34,29 @@ else
 
 function siTieneMascota (tieneMascota){
        confirm("¿Desea comprar alimento?") 
-       let mascota = prompt("Indique para que animal sera su pedido(gato/perro)")
-        if(mascota=="Perro"||mascota=="perro")
-            {let usuarioEncarga = confirm("Actualmente el paquete de 2kg de perro esta valuado en 20.000 pesos, confirme para encargar")}
-            encargaUsuario(usuarioEncarga)
-        else if (mascota=="Gato"||mascota=="gato")
-            {let usuarioEncarga = confirm("Actualmente el paquete de 2kg de gato esta valuado en 22.000 pesos, confirme para encargar")}
+        usuario.mascota = prompt("Indique para que animal sera su pedido(gato/perro)")
+        if(mascota=="Perro"||mascota=="perro"){
+            let usuarioEncarga = confirm("Actualmente el paquete de 2kg de perro esta valuado en 20.000 pesos, confirme para encargar")
+            encargaUsuario(usuarioEncarga)}
+        else if(mascota=="Gato"||mascota=="gato"){
+            let usuarioEncarga = confirm("Actualmente el paquete de 2kg de gato esta valuado en 22.000 pesos, confirme para encargar")
         encargaUsuario(usuarioEncarga)
-
+        }
+      
     }
 
 function noTieneMascota (tieneMascota){
-       let apoya = confirm("¿Quiere apoyar de todas maneras al emprendimiento?")
-        if(apoya)
-            apoyaEmprendimiento
-        else
-            alert ("Muchas gracias de todas modos, atentamente Fortinut")
+      apoya=confirm("¿Quiere apoyar de todas maneras al emprendimiento?")
+        apoyaEmprendimiento(apoya)
 }
 
-function main()
+function main(){
 alert("Bienvenido a Fortinut, acepte para continuar")
 let tieneMascota = confirm("Contanos ¿tenes mascota?")
 if(tieneMascota)
     siTieneMascota (tieneMascota)
 else
     noTieneMascota (tieneMascota)
+}
+    main()
+  cargoBasedeDatos(usuario)
