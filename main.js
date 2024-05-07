@@ -23,21 +23,30 @@ if(apoya){
         if(edadUsuario<18)
             alert("USTED DEBE TENER AL MENOS 18 AÑOS PARA DONAR")
         }while (edadUsuario<18)
+        nombreUsuario = prompt("Indique su nombre y apellido: ")
         prompt("Indique en pesos, cuánto quiere donar:")
-        alert ("Muchas gracias"+ nombreUsuario+ ", atentamente, Fortinut")
+        alert ("Muchas gracias "+ nombreUsuario+ " , atentamente, Fortinut")
 }
 else{
-    apoya="No"
+    apoya="No" 
+    nombreUsuario = prompt("Ingrese su nombre y apellido: ")
+    edadUsuario = prompt("Indique su edad: ")
     alert ("Muchas gracias de todas modos, atentamente Fortinut")
-     nombreUsuario = prompt("Ingrese su nombre y apellido: ")
+    
 }
 }
 
 function encargaUsuario (usuarioEncarga){
+    edadUsuario = prompt("Indique su edad: ")
+    do{
+        if(edadUsuario<18)
+            alert("USTED DEBE TENER AL MENOS 18 AÑOS PARA ENCARGAR")
+        }while (edadUsuario<18)
+        nombreUsuario = prompt("Indique su nombre y apellido")
 if(usuarioEncarga)
-    alert("Muchas gracias, tu pedido está encargado, atentamente Fortinut")
+    alert ("Muchas gracias "+ nombreUsuario+ " ,su pedido ha sido encargado, atentamente, Fortinut")
 else
-    alert("Muchas gracias de todos modos, atentamente Fortinut")
+    alert("Muchas gracias de todos modos "+ nombreUsuario+ " , atentamente Fortinut")
 }
 
 function siTieneMascota (tieneMascota){
@@ -59,13 +68,21 @@ function noTieneMascota (tieneMascota){
 }
 
 function main(){
-alert("Bienvenido a Fortinut, acepte para continuar")
+    let nombreUsuario
+inicio = confirm("Bienvenido a Fortinut, acepte para continuar")
+while(inicio){
 let tieneMascota = confirm("Contanos ¿tenes mascota?")
 if(tieneMascota)
     siTieneMascota (tieneMascota)
 else
-    noTieneMascota (tieneMascota)
+    noTieneMascota (tieneMascota) 
+
+    cargoBasedeDatos(nombreUsuario,edadUsuario,apoya,mascota)
+  muestroBaseDeDatos(nombreUsuario,edadUsuario,apoya,mascota)
+  console.log (muestroBaseDeDatos(nombreUsuario,edadUsuario,apoya,mascota))
 }
-    main()
-  cargoBasedeDatos(usuario)
-  muestr
+alert("Hasta pronto, atentamente Fortinut")
+}
+main()
+    
+ 
