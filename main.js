@@ -36,21 +36,7 @@ if(usuarioEncarga)
 else
     alert("Muchas gracias de todos modos "+ nombreUsuario+ " , atentamente Fortinut")
 }
-/*
-function ingresaEdad( edadUsuario){
-do{
-    const edadUsuario = prompt("Indique su edad: ")
-    if(edadUsuario<18)
-        alert("USTED DEBE TENER AL MENOS 18 AÑOS PARA ENCARGAR")
-    }while (edadUsuario<18)
-}
-function noTieneMascota (tieneMascota){
-    mascota= "No tiene"
-      apoya=confirm("¿Quiere apoyar de todas maneras al emprendimiento?")
-      apoyaEmprendimiento(apoya)
-}
 
-*/
 function siTieneMascota (nombreUsuario,mascota){
         if(mascota=="Perro"||mascota=="perro"){
             let usuarioEncarga = confirm("Actualmente el paquete de 2kg de perro esta valuado en 20.000 pesos, confirme para encargar")
@@ -66,6 +52,7 @@ function siTieneMascota (nombreUsuario,mascota){
 
 function main (){
 inicio = confirm("Bienvenido a Fortinut, acepte para continuar")
+while(inicio){
 const nombreUsuario = prompt("Indique su nombre y apellido")
 const edadUsuario = prompt("Indique su edad (debe ser mayor de edad para realizar un encargo):  ")
 const mascota = prompt("Indique para que animal sera su pedido(gato/perro)")
@@ -73,10 +60,12 @@ const apoya=confirm("¿Quiere apoyar al emprendimiento?")
 apoyaEmprendimiento(apoya,nombreUsuario)
 let haycompra = confirm("¿Desea comprar alimento?") 
 if(haycompra)
-siTieneMascota(mascota,nombreUsuario)
+siTieneMascota()
 
 else
 alert("Hasta pronto, atentamente Fortinut")
+inicio = confirm("Bienvenido a Fortinut, acepte para continuar")
+}
 
 
 
