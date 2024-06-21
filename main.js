@@ -1,33 +1,81 @@
+const usuariosFortinut = JSON.parse(localStorage.getItem("usuariosFortinut")) || []
 
-const usuariosFortinut = []
-function cargoBasedeDatos (nombreUsuario,edad,apoya,mascota){
-    const usuario = {
-     nombreUsuario:nombreUsuario,
-     edadUsuario:edad,
-     apoya,
-     mascota:mascota
- }
+
+function cargarUsuario (usuario){
+
+
     usuariosFortinut.push(usuario)
-}
-function muestroBaseDeDatos (nombreUsuario,edadUsuario,apoya,mascota){
-    for(const usuario of usuariosFortinut)
-        {
-            console.log("Nombre: "+ usuario.nombreUsuario +" Edad: "+usuario.edadUsuario+" Apoya el emprendimieto? "+usuario.apoya+" Mascota: "+usuario.mascota)
-        }
+    localStorage.setItem("usuariosFortinut",JSON.stringify(usuariosFortinut)) // agrege esta linea para guarda en el local storage
 }
 
-function apoyaEmprendimiento(apoya,nombreUsuario){
-if(apoya){ 
-    let apoya= "Si"
-        prompt("Indique en pesos, cuánto quiere donar:")
-        alert ("Muchas gracias "+ nombreUsuario+ " , atentamente, Fortinut")
+
+
+
+function mostrarUsuario (usuario){ // manipulacion del dom
+    const app = document.getElementById("app")
+    const element = document.createElement("div")
+    element.className = "tarjeta-usuario"
+    element.innerHTML = `
+                            <h3>${usuario.nombre}</h3>
+                            <p>${usuario.edad}</p>
+                            <p>${usuario.apoya}</p>
+                            <p>${usuario.mascota}</p>
+    `
+    app.append(element)
 }
-else{
-    let apoya="No" 
-    alert ("Muchas gracias de todas modos, atentamente Fortinut")
+
+
+function mostrarUsuarios (){ //manipulacion con el dom
+   
+    usuariosFortinut.forEach(usuario => {
+       mostrarUsuario(usuario)
+
+
+    })
+}
+
+
+
+function main (){
+
+
+    mostrarUsuarios()
+    const btnUsuarioNuevo = document.getElementById("btnUsuarioNuevo")
+    btnUsuarioNuevo.addEventListener("click",()=>{
+        const nombreUsuarioNuevo = document.getElementById("nombreUsuarioNuevo")
+        const edadUsuarioNuevo = document.getElementById("edadUsuarioNuevo")
+        const apoyaUsuarioNuevo = document.getElementById("apoyaUsuarioNuevo")
+        const mascotaUsuarioNuevo = document.getElementById("mascotaUsuarioNuevo")
+        const usuario = {
+            nombre:nombreUsuarioNuevo.value,
+            edad:edadUsuarioNuevo.value,
+            apoya:apoyaUsuarioNuevo.value,
+            mascota:mascotaUsuarioNuevo.value
+        }
+        cargarUsuario(usuario)
+        mostrarUsuario(usuario)
+        nombreUsuarioNuevo.value = ""
+        edadUsuarioNuevo.value = ""
+        apoyaUsuarioNuevo.value = ""
+        mascotaUsuarioNuevo.value =""
+    })
     
+    }
+    main ()
+     
+
+
+
+
+
+
+// tarea para el hogar : reformular funciones apoyaEmprendimiento, encargaUsuario siTieneMascota )
+
+
+function apoyaEmprendimiento(usuariosFortinut){
+    usuariosFortinut.filter(getElementById,apoyaUsuarioNuevo.value)="Si"
 }
-}
+
 
 function encargaUsuario (usuarioEncarga,nombreUsuario){
  
@@ -37,43 +85,17 @@ else
     alert("Muchas gracias de todos modos "+ nombreUsuario+ " , atentamente Fortinut")
 }
 
-function siTieneMascota (nombreUsuario,mascota){
-        if(mascota=="Perro"||mascota=="perro"){
-            let usuarioEncarga = confirm("Actualmente el paquete de 2kg de perro esta valuado en 20.000 pesos, confirme para encargar")
-            encargaUsuario(usuarioEncarga,nombreUsuario)}
-        else if(mascota=="Gato"||mascota=="gato"){
-            let usuarioEncarga = confirm("Actualmente el paquete de 2kg de gato esta valuado en 22.000 pesos, confirme para encargar")
-        encargaUsuario(usuarioEncarga,nombreUsuario)
-        }
-      
+
+function tienePerro (nombreUsuario,mascota){
+    
+     usuariosFortinut.filter(getElementById,mascotaUsuarioNuevo.value)="Perro"
     }
 
-
-
-function main (){
-inicio = confirm("Bienvenido a Fortinut, acepte para continuar")
-while(inicio){
-const nombreUsuario = prompt("Indique su nombre y apellido")
-const edadUsuario = prompt("Indique su edad (debe ser mayor de edad para realizar un encargo):  ")
-const mascota = prompt("Indique para que animal sera su pedido(gato/perro)")
-const apoya=confirm("¿Quiere apoyar al emprendimiento?")
-apoyaEmprendimiento(apoya,nombreUsuario)
-let haycompra = confirm("¿Desea comprar alimento?") 
-if(haycompra)
-siTieneMascota()
-
-else
-alert("Hasta pronto, atentamente Fortinut")
-inicio = confirm("Bienvenido a Fortinut, acepte para continuar")
-}
-
-
-
-
-
-
-cargoBasedeDatos(nombreUsuario,edadUsuario,apoya,mascota)
-muestroBaseDeDatos(nombreUsuario,edadUsuario,apoya,mascota)
-}
-main ()
- 
+  function mostrarUsuariosConPerro (){ 
+   
+        usuariosFortinut.forEach(usuario.filter(mascotaUsuarioNuevo.value="Perro") => {
+           mostrarUsuarioConPerro(usuario)
+    
+    
+        })
+    }
